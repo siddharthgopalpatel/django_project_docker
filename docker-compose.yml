@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  django:
+    build:
+      context: django/
+      dockerfile: django_dockerfile
+    image: djangoimage
+    container_name: django
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    tty: true
+    networks:
+      - t_network
+
+networks:
+  t_network:
+    driver: bridge
+
